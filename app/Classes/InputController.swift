@@ -26,7 +26,7 @@ open class InputController: IMKInputController {
         }
         
         let charset = CharacterSet.alphanumerics.union(.punctuationCharacters).union(.symbols)
-        if !Scanner(string: string).scanCharacters(from: charset, into: nil) {
+        if Scanner(string: string).scanCharacters(from: charset) == nil {
             NSLog("control code!")
             if romanBuffer.isEmpty, kanaBuffer.isEmpty { return false }
             var handled = true
